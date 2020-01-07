@@ -8,6 +8,7 @@ import com.practice.mars_rover.constants.Move;
 import com.practice.mars_rover.entities.CartesianCoordinate;
 import com.practice.mars_rover.entities.Plateau;
 import com.practice.mars_rover.entities.Rover;
+import com.practice.mars_rover.exceptions.InvalidInputException;
 
 /**
  * Hello world!
@@ -31,18 +32,12 @@ public class App {
 		Rover r1 = new Rover(roverPosition, 'E', plateau);
 
 		// input = br.readLine();
-		String input = "MMRMMRMRRM";
-		for (int i = 0; i < input.length(); i++) {
-			switch (input.charAt(i)) {
-			case Move.LEFT:
-				r1.turnLeft();
-				break;
-			case Move.RIGHT:
-				r1.turnRight();
-				break;
-			case Move.FORWARD:
-				r1.move();
-			}
+		String commands = "MMRMMRMRRM";
+		try {
+			r1.run(commands);
+		} catch (InvalidInputException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		r1.printCoordinates();
 	}

@@ -4,10 +4,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.practice.mars_rover.constants.CompassPoint;
+import com.practice.mars_rover.constants.Move;
+import com.practice.mars_rover.exceptions.InvalidInputException;
 
 public class Rover {
 	private final static Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
-	
+
 	private CartesianCoordinate position;
 
 	private char direction;
@@ -81,6 +83,24 @@ public class Rover {
 		case CompassPoint.WEST:
 			this.direction = CompassPoint.NORTH;
 			break;
+		}
+	}
+
+	public void run(String commands) throws InvalidInputException {
+		for (int i = 0; i < commands.length(); i++) {
+			switch (commands.charAt(i)) {
+			case Move.LEFT:
+				turnLeft();
+				break;
+			case Move.RIGHT:
+				turnRight();
+				break;
+			case Move.FORWARD:
+				move();
+				break;
+			default:
+				throw new InvalidInputException("Invalid Move: " + commands.charAt(i));
+			}
 		}
 	}
 
