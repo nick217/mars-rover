@@ -104,8 +104,8 @@ public class Rover {
 		}
 	}
 
-	public void printCoordinates() {
-		System.out.println(position.toString() + " " + direction);
+	public String currentCoordinates() {
+		return position.toString() + " " + direction;
 	}
 
 }

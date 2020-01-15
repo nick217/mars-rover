@@ -39,6 +39,6 @@ public class App {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		r1.printCoordinates();
+		System.out.println(r1.currentCoordinates());
 	}
 }
